@@ -4,9 +4,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Cargar el modelo, el vectorizador y la data
 
-knn_model = load(open("knn_neighbors-6_algorithm-brute_metric-cosine.pkl", "rb"))
+knn_model = load(open(r"knn_neighbors-6_algorithm-brute_metric-cosine.pkl", "rb"))
 
-total_data = load(open("total_data.sav", "rb"))
+total_data = load(open(r"total_data.sav", "rb"))
     
 vectorizer = TfidfVectorizer(token_pattern=r'\b\w+\b', lowercase=True)
 matrix = vectorizer.fit_transform(total_data['tags'])
