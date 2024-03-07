@@ -1,12 +1,14 @@
 import streamlit as st
-from pickle import load
+import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Cargar el modelo, el vectorizador y la data
 
-knn_model = load(open(r"/workspace/streamlit-deploy-ml-excercise/src/knn_neighbors-6_algorithm-brute_metric-cosine.pkl", "rb"))
+with open("src/knn_neighbors-6_algorithm-brute_metric-cosine.pkl", "rb") as f:
+    knn_model = pickle.load(f)
 
-total_data = load(open(r"/workspace/streamlit-deploy-ml-excercise/src/total_data.sav", "rb"))
+with open("src/total_data.sav", "rb") as f:
+    total_data = pickle.load(f)
     
 vectorizer = TfidfVectorizer(token_pattern=r'\b\w+\b', lowercase=True)
 matrix = vectorizer.fit_transform(total_data['tags'])
